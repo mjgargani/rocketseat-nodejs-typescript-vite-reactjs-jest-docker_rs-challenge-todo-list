@@ -44,6 +44,9 @@ describe("List test", () =>{
 
     expect(listItemContent).toHaveTextContent(list[0].content);
     expect(listItemContent).toHaveTextContent("há menos de um minuto");
+    
+    const listItemCheck = screen.getByTestId(`list_item_check_${list[0].id}`);
+    expect(listItemCheck).toHaveProperty("checked", list[0].checked);
   })
   it("Changes the 'Complete' tracker after check the items", async () => {
     const { rerender } = render(<List items={list} handleItems={handleListItem}/>)
