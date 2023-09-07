@@ -4,9 +4,7 @@ import { List, ListItem } from "../components/List"
 
 import listMock from "./mock.json";
 
-afterAll(cleanup);
-
-let list: ListItem[] = listMock;
+let list: ListItem[];
 const handleListItem = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
   const { target } = event;
   const id = target.value;
@@ -17,9 +15,12 @@ const handleListItem = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
   list = newList;
 })
 
+afterAll(cleanup);
+beforeEach(() => list = listMock);
+
 describe("List test", () =>{
-  it("Returns all list items from mock", async () =>{
-    render(<List items={list} handleItems={handleListItem}/>)
+  it("Returns all list items from mock, depending on list state", async () =>{
+    const { rerender } = render(<List items={list} handleItems={handleListItem}/>)
 
     const listItems = await screen.findAllByTestId(/list_item_container_\w/);
 
@@ -29,6 +30,20 @@ describe("List test", () =>{
       expect(el).toBeInTheDocument()
       expect(el).toHaveTextContent(list[i].content)
     }
+
+    list = [{
+      id: "237c70ce-2bbd-4ebc-99d0-ba54f25ec987",
+      content: "Terminar projeto do Ignite",
+      checked: false,
+      date: new Date(Date.now()).toISOString()
+    }, ...list];
+
+    rerender(<List items={list} handleItems={handleListItem}/>)
+
+    const listItemContent = screen.getByTestId(`list_item_container_${list[0].id}`);
+
+    expect(listItemContent).toHaveTextContent(list[0].content);
+    expect(listItemContent).toHaveTextContent("há menos de um minuto");
   })
   it("Changes the 'Complete' tracker after check the items", async () => {
     const { rerender } = render(<List items={list} handleItems={handleListItem}/>)

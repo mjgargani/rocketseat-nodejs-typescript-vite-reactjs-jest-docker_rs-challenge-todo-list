@@ -1,7 +1,9 @@
+import { newDate } from "../utils/date"
+
 export interface ListItem {
   id: string,
   content: string,
-  date: Date | string,
+  date: string,
   checked: boolean
 }
 
@@ -35,6 +37,13 @@ export function List({
             />
             <label htmlFor={el.id}>{el.content}</label>
           </div>
+          <time
+              title={newDate(new Date(el.date)).dateFormat}
+              dateTime={el.date}
+              data-testid={`list_item_date_${el.id}`}
+          >
+              ({newDate(new Date(el.date)).relativeDate})
+          </time>
           <button 
             data-testid={`list_item_rm_btn_${el.id}`}
           >Remover</button>
