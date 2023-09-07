@@ -5,7 +5,7 @@ interface InputTaskProps {
 }
 
 export function InputTask({ addTask }: InputTaskProps) {
-  const [inputValue, setInputValue] = useState<string>("Adicione uma nova tarefa")
+  const [inputValue, setInputValue] = useState<string>("")
 
   const handleInputValue = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
@@ -21,7 +21,7 @@ export function InputTask({ addTask }: InputTaskProps) {
   }
 
   return (<div>
-    <input type="text" value={inputValue} onChange={handleInputValue} required/>
+    <input type="text" value={inputValue} onChange={handleInputValue} placeholder="Adicione uma nova tarefa" required/>
     <button onClick={handleAddTask} disabled={!inputValue}>Criar</button>
   </div>)
 }
