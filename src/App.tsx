@@ -6,10 +6,8 @@ function App() {
   const [list, setList] = useState<ListItem[]>([])
 
   useEffect(() => {
-    if(!list.length) {
-      setList(listMock);
-    }
-  }, [list])
+    setList(listMock);
+  }, [])
 
   const handleListItem = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = event;
@@ -21,10 +19,16 @@ function App() {
     setList(newList);
   }
 
+  const deleteListItem = (id: string) => {
+    const newList = list.filter(el => el.id !== id);
+    
+    setList(newList);
+  }
+
   return (
     <>
       <div>Input</div>
-      <List items={list} handleItems={handleListItem}/>
+      <List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>
     </>
   )
 }

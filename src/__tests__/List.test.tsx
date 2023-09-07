@@ -14,13 +14,17 @@ const handleListItem = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
   
   list = newList;
 })
+const deleteListItem = (id: string) => {
+  const newList = list.filter(el => el.id !== id);
+  list = newList;
+}
 
 afterAll(cleanup);
 beforeEach(() => list = listMock);
 
 describe("List test", () =>{
   it("Returns all list items from mock, depending on list state", async () =>{
-    const { rerender } = render(<List items={list} handleItems={handleListItem}/>)
+    const { rerender } = render(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>)
 
     const listItems = await screen.findAllByTestId(/list_item_container_\w/);
 
@@ -38,7 +42,7 @@ describe("List test", () =>{
       date: new Date(Date.now()).toISOString()
     }, ...list];
 
-    rerender(<List items={list} handleItems={handleListItem}/>)
+    rerender(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>)
 
     const listItemContent = screen.getByTestId(`list_item_container_${list[0].id}`);
 
@@ -49,7 +53,7 @@ describe("List test", () =>{
     expect(listItemCheck).toHaveProperty("checked", list[0].checked);
   })
   it("Changes the 'Complete' tracker after check the items", async () => {
-    const { rerender } = render(<List items={list} handleItems={handleListItem}/>)
+    const { rerender } = render(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>)
 
     const checkItems = await screen.findAllByTestId(/list_item_check_\w/);
 
@@ -65,7 +69,7 @@ describe("List test", () =>{
     ,0)
 
     const completionTrack = await screen.findByTestId(/list_completion_track/);
-    expect(completionTrack).toHaveTextContent(`${defaultCompletedTasks}/${listMock.length}`)
+    expect(completionTrack).toHaveTextContent(`${defaultCompletedTasks} de ${listMock.length}`)
 
     fireEvent.click(checkItems[0])
 
@@ -75,10 +79,33 @@ describe("List test", () =>{
 
     expect(afterCompletedTasks).toBe(3)
     
-    rerender(<List items={list} handleItems={handleListItem}/>)
+    rerender(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>)
 
     const afterCompletionTrack = screen.getByTestId(/list_completion_track/);
     expect(afterCompletionTrack)
-      .toHaveTextContent(`${afterCompletedTasks}/${list.length}`);
+      .toHaveTextContent(`${afterCompletedTasks} de ${list.length}`);
+  })
+  it("Deletes a item from list, after clicking in 'remove item' button", async () => {
+    const { rerender } = render(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>)
+
+    const listItems = await screen.findAllByTestId(/list_item_container_\w/);
+
+    expect(listItems).toHaveLength(list.length);
+
+    const removeButton = await screen.findByTestId(`list_item_rm_btn_${list[0].id}`)
+
+    fireEvent.click(removeButton)
+
+    expect(list.length).toBe(listMock.length - 1)
+    expect(list[0].id).not.toBe(listMock[0].id)
+    
+    rerender(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>)
+
+    const afterCompletionTrack = screen.getByTestId(/list_completion_track/);
+    expect(afterCompletionTrack)
+      .toHaveTextContent(`3 de ${list.length}`);
+
+    const taskList = await screen.findByTestId(/task_list_container/);
+    expect(taskList).not.toHaveTextContent(listMock[0].content);
   })
 })
