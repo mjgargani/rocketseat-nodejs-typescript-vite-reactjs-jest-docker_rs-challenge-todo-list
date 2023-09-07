@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react"
-
-type Completed = [current: number, total: number]
-
 export interface ListItem {
   id: string,
   content: string,
@@ -18,21 +14,9 @@ export function List({
   items,
   handleItems
 }: ListProps) {
-  const [completed, setCompleted] = useState<Completed>([0, 0]);
-
-  useEffect(() => {
-    if(items.length){
-      const newCompleted: Completed = [
-        items.filter(el => el.checked).length, 
-        items.length
-      ];
-      setCompleted(newCompleted);
-    }
-  }, [items])
-
   return (<>
     <div data-testid={'list_completion_track'}>
-      Completed: {completed[0]}/{completed[1]}
+      Completed: {items.filter(el => el.checked).length}/{items.length}
     </div>
     {
       items.map(el => (

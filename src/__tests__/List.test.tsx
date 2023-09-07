@@ -6,21 +6,10 @@ import listMock from "./mock.json";
 
 afterAll(cleanup);
 
-let list: ListItem[] = [];
-
-const handleListItem = (event: React.ChangeEvent<HTMLInputElement>) => {
-  const { target } = event;
-  const id = target.value;
-  const { checked } = target;
-
-  const newList = list.map(el => el.id === id ? {...el, checked} : el);
-  
-  list = newList;
-}
-
 describe("List test", () =>{
   it("Returns all list items from mock", async () =>{
-    list = listMock;
+    const list: ListItem[] = listMock;
+    const handleListItem = jest.fn();
 
     render(<List items={list} handleItems={handleListItem}/>)
 
@@ -34,7 +23,17 @@ describe("List test", () =>{
     }
   })
   it("Changes the 'Complete' tracker after check the items", async () => {
-    list = listMock;
+    let list: ListItem[] = listMock;
+
+    const handleListItem = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
+      const { target } = event;
+      const id = target.value;
+      const { checked } = target;
+
+      const newList = list.map(el => el.id === id ? {...el, checked} : el);
+      
+      list = newList;
+    })
 
     render(<List items={list} handleItems={handleListItem}/>)
 
@@ -60,6 +59,13 @@ describe("List test", () =>{
       (acc, curr) => curr.checked ? acc + 1 : acc
     ,0)
 
-    expect(afterCompletedTasks).toBe(3);
+    expect(afterCompletedTasks).toBe(3)
+    
+    cleanup();
+    render(<List items={list} handleItems={handleListItem}/>)
+
+    const afterCompletionTrack = screen.getByTestId(/list_completion_track/);
+    expect(afterCompletionTrack)
+      .toHaveTextContent(`${afterCompletedTasks}/${list.length}`);
   })
 })
