@@ -1,0 +1,62 @@
+[
+  {
+      "id": "364fa638-ff5b-433c-9497-957a122d26d8",
+      "content": "Fazer compras de supermercado",
+      "date": "2023-09-07T19:26:33.884Z",
+      "checked": true
+  },
+  {
+      "id": "d0f0d494-73a8-45f5-ac1a-b99b2fb8d2be",
+      "content": "Lavar o carro",
+      "date": "2023-09-07T16:34:41.083Z",
+      "checked": false
+  },
+  {
+      "id": "ea86c952-90f8-4031-9905-902cfa0aef0a",
+      "content": "Pagar contas de energia",
+      "date": "2023-09-07T13:34:31.809Z",
+      "checked": false
+  },
+  {
+      "id": "3a7a5e08-acc9-40e6-99e9-3f5a246cdac8",
+      "content": "Estudar para o exame",
+      "date": "2023-09-07T08:44:24.295Z",
+      "checked": true
+  },
+  {
+      "id": "f7c8208c-5145-4262-aa87-62e0fcdf4ff0",
+      "content": "Fazer exercícios físicos",
+      "date": "2023-09-07T06:55:39.433Z",
+      "checked": false
+  },
+  {
+      "id": "008a3403-dd5d-4849-8d6a-b48cf4879386",
+      "content": "Ler um livro",
+      "date": "2023-09-07T05:00:36.268Z",
+      "checked": false
+  },
+  {
+      "id": "1b9f9d5c-d9c3-44df-9a3e-2c34921ddfa8",
+      "content": "Preparar o jantar",
+      "date": "2023-09-07T00:33:41.020Z",
+      "checked": true
+  },
+  {
+      "id": "dd7d92a9-d181-49b3-bc67-272901f749b3",
+      "content": "Assistir a um filme",
+      "date": "2023-09-06T22:56:20.132Z",
+      "checked": false
+  },
+  {
+      "id": "b46cb4c1-0655-4d70-aa6a-9630c6de6cd3",
+      "content": "Limpar a casa",
+      "date": "2023-09-06T20:58:26.611Z",
+      "checked": true
+  },
+  {
+      "id": "69a0d438-c6b9-4289-9fef-f8c0b7b83c5b",
+      "content": "Organizar o escritório",
+      "date": "2023-09-06T16:56:54.379Z",
+      "checked": false
+  }
+]
