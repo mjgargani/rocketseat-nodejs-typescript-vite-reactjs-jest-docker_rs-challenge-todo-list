@@ -31,9 +31,22 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  transition: all 0.2s;
 }
 
-.taskAdd button img {}
+.taskAdd button:not(:disabled) {
+  cursor: pointer;
+}
+
+.taskAdd button:disabled {
+  cursor: not-allowed;
+  background-color: var(--gray-500);
+}
+
+.taskAdd button:disabled strong,
+.taskAdd button:disabled img {
+  opacity: 0.25;
+}
 
 .inputLimitDisplay {
   z-index: 2000;

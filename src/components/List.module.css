@@ -45,6 +45,7 @@
 
 .taskListItemContainer time {
   color: var(--gray-300);
+  line-height: 150%;
 }
 
 .taskListItemCheckBoxContainer {
@@ -69,12 +70,24 @@ input[type="checkbox"] {
   min-height: 1.15em;
   border: 0.15em solid;
   border-radius: 100%;
-  transform: translateY(0.075em);
+  transform: translateY(0.2em);
+  transition: all 0.2s;
 }
 
 input[type="checkbox"]:checked {
   background: var(--purple-dark);
   color: var(--purple-dark);
+}
+
+input[type="checkbox"]:not(:checked):hover {
+  background: var(--blue-dark);
+  color: var(--blue);
+  opacity: 0.5;
+}
+
+input[type="checkbox"]:checked:hover {
+  background: var(--purple);
+  color: var(--purple);
 }
 
 input[type="checkbox"]:checked::after {
@@ -85,9 +98,30 @@ input[type="checkbox"]:checked::after {
   color: var(--gray-100);
 }
 
+.taskListItemCheckBoxContainer label {
+  line-height: 150%;
+}
+
 .taskListItemContainer button {
   cursor: pointer;
   background-color: transparent;
-  color: var(--gray-100);
+  min-height: 1.5rem;
+  min-width: 1.5rem;
+  line-height: 0;
+  padding-left: 0.1rem;
+  fill: var(--gray-300);
   border: none;
+  transition: all 0.2s;
+}
+
+.taskListItemContainer button:hover {
+  fill: var(--danger);
+  background-color: var(--gray-400);
+}
+
+.noItemMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--gray-300);
 }
