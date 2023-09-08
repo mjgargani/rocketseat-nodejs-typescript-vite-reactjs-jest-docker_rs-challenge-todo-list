@@ -21,7 +21,18 @@ export function InputTask({ addTask }: InputTaskProps) {
   }
 
   return (<div>
-    <input type="text" value={inputValue} onChange={handleInputValue} placeholder="Adicione uma nova tarefa" required/>
-    <button onClick={handleAddTask} disabled={!inputValue}>Criar</button>
+    <input 
+      type="text" 
+      value={inputValue} 
+      onChange={handleInputValue} 
+      placeholder="Adicione uma nova tarefa" 
+      required
+      data-testid={`task_input`}
+    />
+    <button 
+      onClick={handleAddTask} 
+      disabled={!inputValue}
+      data-testid={`task_submit`}
+    >Criar</button>
   </div>)
 }

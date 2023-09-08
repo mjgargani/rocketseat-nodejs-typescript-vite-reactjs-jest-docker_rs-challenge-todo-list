@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom'
 import { screen, render, cleanup, fireEvent } from "@testing-library/react"
-import { List, ListItem } from "../components/List"
+import { List, ListItem } from "../../components/List"
 
-import listMock from "./mock.json";
+import listMock from "../mock.json";
 
 let list: ListItem[];
 const handleListItem = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +19,7 @@ const deleteListItem = (id: string) => {
   list = newList;
 }
 
-afterAll(cleanup);
+beforeAll(cleanup);
 beforeEach(() => list = listMock);
 
 describe("List test", () =>{
