@@ -1,6 +1,7 @@
 import { newDate } from "../utils/date"
-
 import styles from "./List.module.css"
+
+import trashIcon from "../assets/trash-icon.svg";
 export interface ListItem {
   id: string,
   content: string,
@@ -64,7 +65,7 @@ export function List({
               data-testid={`list_item_rm_btn_${el.id}`}
               onClick={() => deleteItem(el.id)}
               className={styles.taskListItemRmButton}
-            >Remover</button>
+            ><img src={trashIcon} alt="Remover item"/></button>
           </div>
         ))
       : (<>

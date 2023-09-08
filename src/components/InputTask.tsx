@@ -10,7 +10,9 @@ export function InputTask({ addTask }: InputTaskProps) {
 
   const handleInputValue = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
-    setInputValue(newValue);
+    if(newValue.length <= 100){
+      setInputValue(newValue);
+    }
   }
 
   const handleAddTask = (event: MouseEvent<HTMLButtonElement>) => {

@@ -17,9 +17,12 @@
 }
 
 .header {
+  position: sticky;
+  top: 0;
   background-color: var(--gray-700);
   background-image: url('./header-logo.svg');
   background-repeat: no-repeat;
   background-position: center;
   min-height: 12.5rem;
+  z-index: 1000;
 }

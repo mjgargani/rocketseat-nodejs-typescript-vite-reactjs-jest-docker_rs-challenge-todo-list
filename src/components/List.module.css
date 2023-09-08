@@ -40,7 +40,6 @@
   border-radius: 0.5rem;
 
   background: var(--gray-500);
-
   border: 0.05rem solid var(--gray-400);
 }
 
@@ -55,13 +54,14 @@
   flex-direction: row;
   gap: 1rem;
   color: var(--gray-100);
+  word-wrap: break-word;
+  overflow: hidden;
 }
 
 input[type="checkbox"] {
   cursor: pointer;
   appearance: none;
   background-color: transparent;
-  font: inherit;
   color: var(--blue);
   max-width: 1.15em;
   max-height: 1.15em;
@@ -83,4 +83,11 @@ input[type="checkbox"]:checked::after {
   margin-left: 5%;
   line-height: 0;
   color: var(--gray-100);
+}
+
+.taskListItemContainer button {
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--gray-100);
+  border: none;
 }
