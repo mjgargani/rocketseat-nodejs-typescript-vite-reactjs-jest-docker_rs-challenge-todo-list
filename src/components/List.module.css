@@ -27,6 +27,16 @@
   color: var(--purple);
 }
 
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .taskListItemContainer {
   display: flex;
   flex-direction: row;
@@ -41,6 +51,8 @@
 
   background: var(--gray-500);
   border: 0.05rem solid var(--gray-400);
+
+  animation: appear 0.5s;
 }
 
 .taskListItemContainer time {
