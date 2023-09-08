@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header,
+.footer {
+  padding: 0 25%;
+}
+
+@media (max-width: 768px) {
+
+  .header,
+  .footer {
+    padding: 0 5%;
+  }
+}
+
+.header {
+  background-color: var(--gray-700);
+  background-image: url('./header-logo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 200px;
+}

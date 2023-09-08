@@ -5,6 +5,9 @@ import { InputTask } from "./components/InputTask"
 
 import { v4 as uuid } from 'uuid';
 
+import './global.css'
+import styles from './App.module.css'
+
 function App() {
   const [list, setList] = useState<ListItem[]>([])
 
@@ -40,10 +43,14 @@ function App() {
   }
 
   return (
-    <>
-      <InputTask addTask={addTask} />
-      <List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>
-    </>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <InputTask addTask={addTask} />
+      </div>
+      <div className={styles.footer}>
+        <List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>
+      </div>
+    </div>
   )
 }
 

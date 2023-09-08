@@ -20,10 +20,10 @@ export function List({
 }: ListProps) {
   return (<div data-testid={'task_list_container'}>
     <div data-testid={'list_item_length'}>
-      Tarefas criadas <span>{items.length}</span>
+      <p>Tarefas criadas <span>{items.length}</span></p>
     </div>
     <div data-testid={'list_completion_track'}>
-      Concluídas <span>{items.filter(el => el.checked).length} de {items.length}</span>
+      <p>Concluídas <span>{items.filter(el => el.checked).length} de {items.length}</span></p>
     </div>
     {
       items.length ?
