@@ -1,16 +1,21 @@
 import { ChangeEvent, MouseEvent, useState } from "react";
 
 import styles from './InputTask.module.css'
+
+import plusSignIcon from '../assets/circle-plus-sign.svg'
+
 interface InputTaskProps {
   addTask: (task: string) => void
 }
+
+const inputLimit = 100;
 
 export function InputTask({ addTask }: InputTaskProps) {
   const [inputValue, setInputValue] = useState<string>("")
 
   const handleInputValue = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
-    if(newValue.length <= 100){
+    if(newValue.length <= inputLimit){
       setInputValue(newValue);
     }
   }
@@ -24,6 +29,9 @@ export function InputTask({ addTask }: InputTaskProps) {
   }
 
   return (<div className={styles.taskAdd}>
+    <div className={styles.inputLimitDisplay}>
+      <p><span>{inputValue.length}/{inputLimit}</span></p>
+    </div>
     <input 
       type="text" 
       value={inputValue} 
@@ -37,7 +45,7 @@ export function InputTask({ addTask }: InputTaskProps) {
       disabled={!inputValue}
       data-testid={`task_submit`}
     >
-      <strong>Criar</strong>
+      <strong>Criar</strong><img src={plusSignIcon} alt="Criar"/>
     </button>
   </div>)
 }
