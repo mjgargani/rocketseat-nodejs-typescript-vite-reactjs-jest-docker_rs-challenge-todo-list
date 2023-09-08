@@ -4,7 +4,7 @@
 
 > 🌐 [https://todo.gargani.dev/](https://todo.gargani.dev/)
 
-![deploy-check](https://github.com/mjgargani/rocketseat-nodejs-typescript-vite-reactjs-jest_rs-chl-todo-list/actions/workflows/static.yml/badge.svg)
+![deploy-check](https://github.com/mjgargani/rocketseat-nodejs-typescript-vite-reactjs-jest-docker_rs-challenge-todo-list/actions/workflows/static.yml/badge.svg)
 
 ![coverage-statements](badges/badge-statements.svg) ![coverage-branches](badges/badge-branches.svg) ![coverage-functions](badges/badge-functions.svg) ![coverage-lines](badges/badge-lines.svg)
 
