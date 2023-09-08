@@ -1,5 +1,6 @@
 import { ChangeEvent, MouseEvent, useState } from "react";
 
+import styles from './InputTask.module.css'
 interface InputTaskProps {
   addTask: (task: string) => void
 }
@@ -20,7 +21,7 @@ export function InputTask({ addTask }: InputTaskProps) {
     }
   }
 
-  return (<div>
+  return (<div className={styles.taskAdd}>
     <input 
       type="text" 
       value={inputValue} 

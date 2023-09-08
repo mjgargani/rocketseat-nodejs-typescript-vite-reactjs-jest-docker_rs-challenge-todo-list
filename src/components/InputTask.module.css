@@ -1,0 +1,16 @@
+.taskAdd {
+  position: relative;
+  top: 10.8rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.taskAdd>input {
+  flex: 2;
+  background: var(--gray-500);
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--gray-700);
+  height: 3.4rem;
+  padding-left: 1rem;
+  margin-right: 0.5rem;
+}
