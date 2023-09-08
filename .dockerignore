@@ -1,0 +1,10 @@
+.git*
+dist
+node_modules
+.prettierignore
+.prettierrc
+compose.yml
+Dockerfile
+eslintrc.cjs
+README.md
+thumbnail.webp

@@ -1,66 +1,66 @@
 .taskAdd {
-  position: relative;
-  top: 10.8rem;
-  display: flex;
-  flex-direction: row;
+	position: relative;
+	top: 10.8rem;
+	display: flex;
+	flex-direction: row;
 }
 
-.taskAdd>input,
-.taskAdd>button {
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.35);
+.taskAdd > input,
+.taskAdd > button {
+	box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.35);
 }
 
 .taskAdd input {
-  flex: 2;
-  background: var(--gray-500);
-  border: 0.05rem solid var(--gray-700);
-  height: 3.4rem;
-  padding-left: 1rem;
-  margin-right: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--gray-100);
+	flex: 2;
+	background: var(--gray-500);
+	border: 0.05rem solid var(--gray-700);
+	height: 3.4rem;
+	padding-left: 1rem;
+	margin-right: 0.5rem;
+	font-size: 0.9rem;
+	color: var(--gray-100);
 }
 
 .taskAdd input:focus {
-  outline: 0.1rem solid var(--purple-dark);
+	outline: 0.1rem solid var(--purple-dark);
 }
 
 .taskAdd button {
-  width: 5.6rem;
-  background: var(--blue-dark);
-  color: var(--gray-100);
-  border: none;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  transition: all 0.2s;
+	width: 5.6rem;
+	background: var(--blue-dark);
+	color: var(--gray-100);
+	border: none;
+	font-size: 0.9rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	transition: all 0.2s;
 }
 
 .taskAdd button:not(:disabled) {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .taskAdd button:disabled {
-  cursor: not-allowed;
-  background-color: var(--gray-500);
+	cursor: not-allowed;
+	background-color: var(--gray-500);
 }
 
 .taskAdd button:disabled strong,
 .taskAdd button:disabled img {
-  opacity: 0.25;
+	opacity: 0.25;
 }
 
 .inputLimitDisplay {
-  z-index: 2000;
-  position: absolute;
-  color: var(--gray-350);
-  background-color: var(--gray-600);
-  font-size: 60%;
-  bottom: 0.1rem;
-  right: 6.2rem;
-  padding: 0.1rem;
-  border-radius: 0.5rem;
-  font-weight: bolder;
+	z-index: 2000;
+	position: absolute;
+	color: var(--gray-350);
+	background-color: var(--gray-600);
+	font-size: 60%;
+	bottom: 0.1rem;
+	right: 6.2rem;
+	padding: 0.1rem;
+	border-radius: 0.5rem;
+	font-weight: bolder;
 }

@@ -1,140 +1,140 @@
 .taskList {
-  padding-top: 6rem;
-  display: flex;
-  flex-direction: column;
-  font-size: 0.8rem;
+	padding-top: 6rem;
+	display: flex;
+	flex-direction: column;
+	font-size: 0.8rem;
 }
 
 .taskListHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: bolder;
-  margin-bottom: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: bolder;
+	margin-bottom: 1.5rem;
 }
 
 .taskListHeader span {
-  background: var(--gray-400);
-  padding: 0 0.5rem;
-  color: var(--gray-100);
+	background: var(--gray-400);
+	padding: 0 0.5rem;
+	color: var(--gray-100);
 }
 
 .taskListItemsLen {
-  color: var(--blue);
+	color: var(--blue);
 }
 
 .taskListConcludeList {
-  color: var(--purple);
+	color: var(--purple);
 }
 
 @keyframes appear {
-  from {
-    opacity: 0;
-  }
+	from {
+		opacity: 0;
+	}
 
-  to {
-    opacity: 1;
-  }
+	to {
+		opacity: 1;
+	}
 }
 
 .taskListItemContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.5rem;
-  font-weight: lighter;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 0.5rem;
+	font-weight: lighter;
 
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  border-radius: 0.5rem;
+	padding: 1rem;
+	margin-bottom: 1.5rem;
+	border-radius: 0.5rem;
 
-  background: var(--gray-500);
-  border: 0.05rem solid var(--gray-400);
+	background: var(--gray-500);
+	border: 0.05rem solid var(--gray-400);
 
-  animation: appear 0.5s;
+	animation: appear 0.5s;
 }
 
 .taskListItemContainer time {
-  color: var(--gray-300);
-  line-height: 150%;
-  font-size: smaller;
+	color: var(--gray-300);
+	line-height: 150%;
+	font-size: smaller;
 }
 
 .taskListItemCheckBoxContainer {
-  display: flex;
-  align-items: flex-start;
-  flex-grow: 4;
-  flex-direction: row;
-  gap: 1rem;
-  color: var(--gray-100);
-  word-wrap: break-word;
-  overflow: hidden;
+	display: flex;
+	align-items: flex-start;
+	flex-grow: 4;
+	flex-direction: row;
+	gap: 1rem;
+	color: var(--gray-100);
+	word-wrap: break-word;
+	overflow: hidden;
 }
 
-input[type="checkbox"] {
-  cursor: pointer;
-  appearance: none;
-  background-color: transparent;
-  color: var(--blue);
-  max-width: 1.15em;
-  max-height: 1.15em;
-  min-width: 1.15em;
-  min-height: 1.15em;
-  border: 0.15em solid;
-  border-radius: 100%;
-  transform: translateY(0.2em);
-  transition: all 0.2s;
+input[type='checkbox'] {
+	cursor: pointer;
+	appearance: none;
+	background-color: transparent;
+	color: var(--blue);
+	max-width: 1.15em;
+	max-height: 1.15em;
+	min-width: 1.15em;
+	min-height: 1.15em;
+	border: 0.15em solid;
+	border-radius: 100%;
+	transform: translateY(0.2em);
+	transition: all 0.2s;
 }
 
-input[type="checkbox"]:checked {
-  background: var(--purple-dark);
-  color: var(--purple-dark);
+input[type='checkbox']:checked {
+	background: var(--purple-dark);
+	color: var(--purple-dark);
 }
 
-input[type="checkbox"]:not(:checked):hover {
-  background: var(--blue-dark);
-  color: var(--blue);
-  opacity: 0.5;
+input[type='checkbox']:not(:checked):hover {
+	background: var(--blue-dark);
+	color: var(--blue);
+	opacity: 0.5;
 }
 
-input[type="checkbox"]:checked:hover {
-  background: var(--purple);
-  color: var(--purple);
+input[type='checkbox']:checked:hover {
+	background: var(--purple);
+	color: var(--purple);
 }
 
-input[type="checkbox"]:checked::after {
-  content: "✓";
-  font-weight: bolder;
-  margin-left: 5%;
-  line-height: 0;
-  color: var(--gray-100);
+input[type='checkbox']:checked::after {
+	content: '✓';
+	font-weight: bolder;
+	margin-left: 5%;
+	line-height: 0;
+	color: var(--gray-100);
 }
 
 .taskListItemCheckBoxContainer label {
-  line-height: 150%;
+	line-height: 150%;
 }
 
 .taskListItemContainer button {
-  cursor: pointer;
-  background-color: transparent;
-  min-height: 1.5rem;
-  min-width: 1.5rem;
-  line-height: 0;
-  padding-left: 0.1rem;
-  fill: var(--gray-300);
-  border: none;
-  transition: all 0.2s;
+	cursor: pointer;
+	background-color: transparent;
+	min-height: 1.5rem;
+	min-width: 1.5rem;
+	line-height: 0;
+	padding-left: 0.1rem;
+	fill: var(--gray-300);
+	border: none;
+	transition: all 0.2s;
 }
 
 .taskListItemContainer button:hover {
-  fill: var(--danger);
-  background-color: var(--gray-400);
+	fill: var(--danger);
+	background-color: var(--gray-400);
 }
 
 .noItemMessage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--gray-300);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: var(--gray-300);
 }

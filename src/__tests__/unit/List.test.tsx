@@ -1,111 +1,108 @@
-import '@testing-library/jest-dom'
-import { screen, render, cleanup, fireEvent } from "@testing-library/react"
-import { List, ListItem } from "../../components/List"
+import '@testing-library/jest-dom';
+import { screen, render, cleanup, fireEvent } from '@testing-library/react';
+import { List, ListItem } from '../../components/List';
 
-import listMock from "../mock.json";
+import listMock from '../mock.json';
 
 let list: ListItem[];
 const handleListItem = jest.fn((event: React.ChangeEvent<HTMLInputElement>) => {
-  const { target } = event;
-  const id = target.value;
-  const { checked } = target;
+	const { target } = event;
+	const id = target.value;
+	const { checked } = target;
 
-  const newList = list.map(el => el.id === id ? {...el, checked} : el);
-  
-  list = newList;
-})
+	const newList = list.map((el) => (el.id === id ? { ...el, checked } : el));
+
+	list = newList;
+});
 const deleteListItem = (id: string) => {
-  const newList = list.filter(el => el.id !== id);
-  list = newList;
-}
+	const newList = list.filter((el) => el.id !== id);
+	list = newList;
+};
 
 beforeAll(cleanup);
-beforeEach(() => list = listMock);
+beforeEach(() => (list = listMock));
 
-describe("List test", () =>{
-  it("Returns all list items from mock, depending on list state", async () =>{
-    const { rerender } = render(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>)
+describe('List test', () => {
+	it('Returns all list items from mock, depending on list state', async () => {
+		const { rerender } = render(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem} />);
 
-    const listItems = await screen.findAllByTestId(/list_item_container_\w/);
+		const listItems = await screen.findAllByTestId(/list_item_container_\w/);
 
-    expect(listItems).toHaveLength(list.length);
+		expect(listItems).toHaveLength(list.length);
 
-    for (const [i, el] of listItems.entries()){
-      expect(el).toBeInTheDocument()
-      expect(el).toHaveTextContent(list[i].content)
-    }
+		for (const [i, el] of listItems.entries()) {
+			expect(el).toBeInTheDocument();
+			expect(el).toHaveTextContent(list[i].content);
+		}
 
-    list = [{
-      id: "237c70ce-2bbd-4ebc-99d0-ba54f25ec987",
-      content: "Terminar projeto do Ignite",
-      checked: false,
-      date: new Date(Date.now()).toISOString()
-    }, ...list];
+		list = [
+			{
+				id: '237c70ce-2bbd-4ebc-99d0-ba54f25ec987',
+				content: 'Terminar projeto do Ignite',
+				checked: false,
+				date: new Date(Date.now()).toISOString(),
+			},
+			...list,
+		];
 
-    rerender(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>)
+		rerender(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem} />);
 
-    const listItemContent = screen.getByTestId(`list_item_container_${list[0].id}`);
+		const listItemContent = screen.getByTestId(`list_item_container_${list[0].id}`);
 
-    expect(listItemContent).toHaveTextContent(list[0].content);
-    expect(listItemContent).toHaveTextContent("há menos de um minuto");
-    
-    const listItemCheck = screen.getByTestId(`list_item_check_${list[0].id}`);
-    expect(listItemCheck).toHaveProperty("checked", list[0].checked);
-  })
-  it("Changes the 'Complete' tracker after check the items", async () => {
-    const { rerender } = render(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>)
+		expect(listItemContent).toHaveTextContent(list[0].content);
+		expect(listItemContent).toHaveTextContent('há menos de um minuto');
 
-    const checkItems = await screen.findAllByTestId(/list_item_check_\w/);
+		const listItemCheck = screen.getByTestId(`list_item_check_${list[0].id}`);
+		expect(listItemCheck).toHaveProperty('checked', list[0].checked);
+	});
+	it("Changes the 'Complete' tracker after check the items", async () => {
+		const { rerender } = render(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem} />);
 
-    expect(checkItems).toHaveLength(list.length);
+		const checkItems = await screen.findAllByTestId(/list_item_check_\w/);
 
-    for (const [i, el] of checkItems.entries()){
-      expect(el).toBeInTheDocument()
-      expect(el).toHaveProperty("checked", list[i].checked)
-    }
+		expect(checkItems).toHaveLength(list.length);
 
-    const defaultCompletedTasks = list.reduce(
-      (acc, curr) => curr.checked ? acc + 1 : acc
-    ,0)
+		for (const [i, el] of checkItems.entries()) {
+			expect(el).toBeInTheDocument();
+			expect(el).toHaveProperty('checked', list[i].checked);
+		}
 
-    const completionTrack = await screen.findByTestId(/list_completion_track/);
-    expect(completionTrack).toHaveTextContent(`${defaultCompletedTasks} de ${listMock.length}`)
+		const defaultCompletedTasks = list.reduce((acc, curr) => (curr.checked ? acc + 1 : acc), 0);
 
-    fireEvent.click(checkItems[0])
+		const completionTrack = await screen.findByTestId(/list_completion_track/);
+		expect(completionTrack).toHaveTextContent(`${defaultCompletedTasks} de ${listMock.length}`);
 
-    const afterCompletedTasks = list.reduce(
-      (acc, curr) => curr.checked ? acc + 1 : acc
-    ,0)
+		fireEvent.click(checkItems[0]);
 
-    expect(afterCompletedTasks).toBe(3)
-    
-    rerender(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>)
+		const afterCompletedTasks = list.reduce((acc, curr) => (curr.checked ? acc + 1 : acc), 0);
 
-    const afterCompletionTrack = screen.getByTestId(/list_completion_track/);
-    expect(afterCompletionTrack)
-      .toHaveTextContent(`${afterCompletedTasks} de ${list.length}`);
-  })
-  it("Deletes a item from list, after clicking in 'remove item' button", async () => {
-    const { rerender } = render(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>)
+		expect(afterCompletedTasks).toBe(3);
 
-    const listItems = await screen.findAllByTestId(/list_item_container_\w/);
+		rerender(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem} />);
 
-    expect(listItems).toHaveLength(list.length);
+		const afterCompletionTrack = screen.getByTestId(/list_completion_track/);
+		expect(afterCompletionTrack).toHaveTextContent(`${afterCompletedTasks} de ${list.length}`);
+	});
+	it("Deletes a item from list, after clicking in 'remove item' button", async () => {
+		const { rerender } = render(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem} />);
 
-    const removeButton = await screen.findByTestId(`list_item_rm_btn_${list[0].id}`)
+		const listItems = await screen.findAllByTestId(/list_item_container_\w/);
 
-    fireEvent.click(removeButton)
+		expect(listItems).toHaveLength(list.length);
 
-    expect(list.length).toBe(listMock.length - 1)
-    expect(list[0].id).not.toBe(listMock[0].id)
-    
-    rerender(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem}/>)
+		const removeButton = await screen.findByTestId(`list_item_rm_btn_${list[0].id}`);
 
-    const afterCompletionTrack = screen.getByTestId(/list_completion_track/);
-    expect(afterCompletionTrack)
-      .toHaveTextContent(`3 de ${list.length}`);
+		fireEvent.click(removeButton);
 
-    const taskList = await screen.findByTestId(/task_list_container/);
-    expect(taskList).not.toHaveTextContent(listMock[0].content);
-  })
-})
+		expect(list.length).toBe(listMock.length - 1);
+		expect(list[0].id).not.toBe(listMock[0].id);
+
+		rerender(<List items={list} handleItems={handleListItem} deleteItem={deleteListItem} />);
+
+		const afterCompletionTrack = screen.getByTestId(/list_completion_track/);
+		expect(afterCompletionTrack).toHaveTextContent(`3 de ${list.length}`);
+
+		const taskList = await screen.findByTestId(/task_list_container/);
+		expect(taskList).not.toHaveTextContent(listMock[0].content);
+	});
+});
