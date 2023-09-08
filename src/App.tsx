@@ -12,7 +12,10 @@ function App() {
   const [list, setList] = useState<ListItem[]>([])
 
   useEffect(() => {
-    setList(listMock);
+    console.log(import.meta.env)
+    if(import.meta.env.VITE_FILLED === "true"){
+      setList(listMock);
+    }
   }, [])
 
   const handleListItem = (event: React.ChangeEvent<HTMLInputElement>) => {

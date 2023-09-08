@@ -21,6 +21,10 @@
   color: var(--gray-100);
 }
 
+.taskAdd input:focus {
+  outline: 0.1rem solid var(--purple-dark);
+}
+
 .taskAdd button {
   width: 5.6rem;
   background: var(--blue-dark);
