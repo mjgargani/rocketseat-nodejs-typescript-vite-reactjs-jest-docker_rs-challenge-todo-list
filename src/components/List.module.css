@@ -56,3 +56,31 @@
   gap: 1rem;
   color: var(--gray-100);
 }
+
+input[type="checkbox"] {
+  cursor: pointer;
+  appearance: none;
+  background-color: transparent;
+  font: inherit;
+  color: var(--blue);
+  max-width: 1.15em;
+  max-height: 1.15em;
+  min-width: 1.15em;
+  min-height: 1.15em;
+  border: 0.15em solid;
+  border-radius: 100%;
+  transform: translateY(0.075em);
+}
+
+input[type="checkbox"]:checked {
+  background: var(--purple-dark);
+  color: var(--purple-dark);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✓";
+  font-weight: bolder;
+  margin-left: 5%;
+  line-height: 0;
+  color: var(--gray-100);
+}
