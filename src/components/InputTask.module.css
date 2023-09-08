@@ -8,13 +8,18 @@
 .taskAdd>input {
   flex: 2;
   background: var(--gray-500);
-  border: 0.1rem solid var(--gray-700);
+  border: 0.05rem solid var(--gray-700);
   height: 3.4rem;
   padding-left: 1rem;
   margin-right: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--gray-100)
 }
 
 .taskAdd>button {
   width: 5.6rem;
   background: var(--blue-dark);
+  color: var(--gray-100);
+  border: none;
+  font-size: 0.9rem;
 }
