@@ -37,6 +37,12 @@ time {
   color: var(--gray-100);
 }
 
+input,
+button,
+span {
+  border-radius: 0.5rem;
+}
+
 @media (max-width: 768px) {
   html {
     font-size: 87.5%;

@@ -34,6 +34,8 @@ export function InputTask({ addTask }: InputTaskProps) {
       onClick={handleAddTask} 
       disabled={!inputValue}
       data-testid={`task_submit`}
-    >Criar</button>
+    >
+      <strong>Criar</strong>
+    </button>
   </div>)
 }
