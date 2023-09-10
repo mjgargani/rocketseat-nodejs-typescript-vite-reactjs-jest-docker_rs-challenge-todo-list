@@ -14,8 +14,17 @@ function App() {
 	useEffect(() => {
 		if (import.meta?.env?.VITE_FILLED === 'true') {
 			setList(listMock);
+		} else {
+			const newList = JSON.parse(localStorage.getItem('todo-list') || '[]') as ListItem[];
+			if (newList.length) {
+				setList(newList);
+			}
 		}
 	}, []);
+
+	useEffect(() => {
+		localStorage.setItem('todo-list', JSON.stringify(list));
+	}, [list]);
 
 	const handleListItem = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { target } = event;
